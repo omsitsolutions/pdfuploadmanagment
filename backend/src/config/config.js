@@ -1,11 +1,11 @@
-module.exports = {
+const config = {
   development: {
-    username: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_DATABASE,
-    host: process.env.DB_HOST,
-    dialect: postgres,
-    operatorsAliases: false,
+    username: 'postgres',
+    password: 'filho3766',
+    database: 'documents',
+    host: 'localhost',
+    port: 5432,
+    dialect: 'postgres',
     logging: false,
     define: {
       timestamps : true,
@@ -18,8 +18,7 @@ module.exports = {
     password: process.env.DB_PASSWORD,
     database: process.env.DB_DATABASE,
     host: process.env.DB_HOST,
-    dialect: postgres,
-    operatorsAliases: false,
+    dialect: 'postgres',
     logging: false,
     define: {
       timestamps : true,
@@ -32,8 +31,7 @@ module.exports = {
     password: process.env.DB_PASSWORD,
     database: process.env.DB_DATABASE,
     host: process.env.DB_HOST,
-    dialect: postgres,
-    operatorsAliases: false,
+    dialect: 'postgres',
     logging: false,
     define: {
       timestamps : true,
@@ -42,3 +40,7 @@ module.exports = {
     } 
   }
 }
+
+const env = process.env.NODE_ENV || 'development'
+
+module.exports = config[env]
