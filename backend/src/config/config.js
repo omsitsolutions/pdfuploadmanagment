@@ -19,7 +19,7 @@ const config = {
   },
   test: {
     dialect: process.env.DB_DIALECT || "sqlite",
-    storage: './__tests__database.sqlite',
+    storage: './__tests__/database.sqlite',
     logging: false,
     define: {
       timestamps : true,
