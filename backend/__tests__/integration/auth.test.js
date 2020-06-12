@@ -56,4 +56,42 @@ describe('Authenticate user methods', () => {
         
         expect(response.body).toHaveProperty('token')
     })
+
+    it('should access private routes when have token', async () => {
+
+        const user = await factory.create('User', {
+            password_req: 'teste123'
+        })
+
+        const response = await request(app)
+            .get('/documents')
+            .set('Authorization', `Bearer ${user.generateTokenUser()}`)
+        
+        expect(response.status).toBe(200)
+    })
+
+    it('should block route private when dont have token', async () => {
+
+        const user = await factory.create('User', {
+            password_req: 'teste123'
+        })
+
+        const response = await request(app)
+            .get('/documents')
+
+        expect(response.status).toBe(401)
+    })
+
+    it('should block route private when have invalid token', async () => {
+
+        const user = await factory.create('User', {
+            password_req: 'teste123'
+        })
+
+        const response = await request(app)
+            .get('/documents')
+            .set('Authorization', 'Bearer 123456')
+        
+        expect(response.status).toBe(401)
+    })
 })
