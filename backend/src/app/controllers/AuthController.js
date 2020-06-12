@@ -18,7 +18,7 @@ class AuthController {
         }
 
         return res.json({
-            user,
+            user: user.toJSON(),
             token: user.generateTokenUser()
         })
     }

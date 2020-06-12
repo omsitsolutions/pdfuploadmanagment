@@ -24,6 +24,8 @@ describe('Authenticate user methods', () => {
                 password: 'teste123'
             })
         
+        console.log(response)
+        
         expect(response.status).toBe(200)
     })
 
