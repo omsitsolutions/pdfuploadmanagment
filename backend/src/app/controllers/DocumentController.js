@@ -7,24 +7,30 @@ class DocumentController {
     async store(req, res) {
 
         uploadPdf(req, res, async function (err) {
-            
+
             if (err instanceof multer.MulterError) {
                 return res.status(401).json({ message: err.message })
             } else if (err) {
                 return res.status(401).json({ message: err.message })
             }
 
-            const document = await Document.create({
-                id_user: req.userId,
-                size: req.file.size,
-                path: `/uploads/${req.file.filename}`
-            })
-    
-            if (!document) {
-                return res.status(401).json({ message: 'the document could not be saved' })
+            try {
+                const document = await Document.create({
+                    id_user: req.userId,
+                    size: req.file.size || null,
+                    path: `/uploads/${req.file.filename}`
+                })
+
+                if (!document) {
+                    return res.status(401).json({ message: 'the document could not be saved' })
+                }
+
+                return res.status(200).json({ message: 'Successfully created document' })
+
+            } catch (error) {
+                console.log('error', error.message)
+                return res.status(400).json({ message: error.message })
             }
-    
-            return res.status(200).json({ message: 'Successfully created document' })
         })
     }
 

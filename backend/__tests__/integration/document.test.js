@@ -42,9 +42,7 @@ describe('Documents methods', () => {
         const response = await request(app)
             .post('/documents/store')
             .set('Authorization', `Bearer ${user.generateTokenUser()}`)
-            .send({
-                path: '/path/test.pdf'
-            })
+            .attach('file', './__tests__/files/test.pdf')
 
         expect(response.status).toBe(200)
     })
@@ -54,9 +52,7 @@ describe('Documents methods', () => {
         const response = await request(app)
             .post('/documents/store')
             .set('Authorization', `Bearer 123456`)
-            .send({
-                path: '/path/test.pdf'
-            })
+            .attach('file', './__tests__/files/test.pdf')
 
         expect(response.status).toBe(401)
     })

@@ -7,20 +7,27 @@ class AuthController {
 
         const { name, email, password_req } = req.body
 
-        const user = await User.create({
-            name: name,
-            email: email,
-            password_req: password_req
-        })
+        try {
+            const user = await User.create({
+                name: name,
+                email: email,
+                password_req: password_req
+            })
+    
+            if (!user) {
+                return res.status(401).json({ message: 'User not found' })
+            }
+    
+            return res.json({
+                user: user.toJSON(),
+                token: user.generateTokenUser()
+            })
 
-        if (!user) {
-            return res.status(401).json({ message: 'User not found' })
+        } catch (error){
+            console.log('error', error.message)
+            return res.status(400).json({ message: error.message })
         }
 
-        return res.json({
-            user: user.toJSON(),
-            token: user.generateTokenUser()
-        })
     }
 
     async login(req, res) {
