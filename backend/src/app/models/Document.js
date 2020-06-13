@@ -4,9 +4,18 @@ const bcrypt = require('bcryptjs')
 module.exports = (sequelize, DataTypes) => {
 
     const Document = sequelize.define("Document", {
+        id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
         id_user: DataTypes.INTEGER,
+        size: DataTypes.STRING,
         path: DataTypes.STRING
     })
+
+    Document.prototype.toJSON =  function () {
+        var values = Object.assign({}, this.get());
+      
+        delete values.id_user;
+        return values;
+    }
 
     return Document
 }

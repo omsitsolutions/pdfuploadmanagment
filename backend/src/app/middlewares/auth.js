@@ -8,8 +8,7 @@ module.exports = async (req, res, next) => {
     }
 
     const token = tokenHeader.split('Bearer ')[1]
-    console.log('token', token)
-
+    
     await jwt.verify(token, process.env.APP_SECRET, function(err, decoded) {
         
         if (err) {

@@ -3,6 +3,26 @@ const { User } = require('../models')
 
 class AuthController {
 
+    async create(req, res) {
+
+        const { name, email, password_req } = req.body
+
+        const user = await User.create({
+            name: name,
+            email: email,
+            password_req: password_req
+        })
+
+        if (!user) {
+            return res.status(401).json({ message: 'User not found' })
+        }
+
+        return res.json({
+            user: user.toJSON(),
+            token: user.generateTokenUser()
+        })
+    }
+
     async login(req, res) {
 
         const { email, password } = req.body
