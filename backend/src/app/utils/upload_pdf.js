@@ -13,7 +13,6 @@ const storage = multer.diskStorage({
 module.exports = multer({ 
     storage: storage,
     fileFilter: function (req, file, callback) {
-        console.log('mimetype', file.mimetype)
         if(file.mimetype !== 'application/pdf') {
             return callback(new Error('Only PDF is allowed'))
         }

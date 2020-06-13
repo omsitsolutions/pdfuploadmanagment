@@ -56,5 +56,19 @@ describe('Documents methods', () => {
 
         expect(response.status).toBe(401)
     })
+
+    it('should try create a document with invalid file', async () => {
+
+        const user = await factory.create('User', {
+            password_req: 'teste123'
+        })
+
+        const response = await request(app)
+            .post('/documents/store')
+            .set('Authorization', `Bearer ${user.generateTokenUser()}`)
+            .attach('file', './__tests__/files/test.jpg')
+
+        expect(response.status).toBe(401)
+    })
     
 })
