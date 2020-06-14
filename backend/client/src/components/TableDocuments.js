@@ -1,28 +1,48 @@
 import React from 'react'
-import { Table } from 'react-bootstrap';
-
+import { Button, Table } from 'react-bootstrap';
+import request from '../services/request.services';
 
 const TableDocuments = ({ documents }) => {
 
+    const viewerDocument = async (e, id) => {
+        e.preventDefault()
+
+        try {
+            const response = await request.post(`/documents/viewer?fileId=${id}`, {}, {
+                responseType: 'arraybuffer',
+                headers: {
+                  'Accept': 'application/pdf'
+                }
+            })
+            const file = new Blob([response.data], { type: 'application/pdf' });
+            const fileURL = URL.createObjectURL(file);
+            window.open(fileURL);
+        } catch (err) {
+            alert(err.message)
+        }
+    }
+
     return (
-        <Table striped bordered hover size="sm">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Size</th>
-                    <th>Path</th>
-                </tr>
-            </thead>
-            <tbody>
-                {documents.map((row) => (
+        <div>
+            <Table striped bordered hover size="sm">
+                <thead>
                     <tr>
-                        <td>{row.id}</td>
-                        <td>{row.size || 'Não definido'}</td>
-                        <td>{row.path}</td>
+                        <th>ID</th>
+                        <th>Size</th>
+                        <th>Ações</th>
                     </tr>
-                ))}
-            </tbody>
-        </Table>
+                </thead>
+                <tbody>
+                    {documents.map((row) => (
+                        <tr>
+                            <td>{row.id}</td>
+                            <td>{row.size || 'Não definido'}</td>
+                            <td><Button onClick={(e) => viewerDocument(e, row.id)} variant="link">Visualizar</Button></td>
+                        </tr>
+                    ))}
+                </tbody>
+            </Table>
+        </div>
     )
 }
 

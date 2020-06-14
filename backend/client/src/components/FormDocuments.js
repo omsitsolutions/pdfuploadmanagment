@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Form, Button } from 'react-bootstrap';
 import request from '../services/request.services';
 
-const FormDocuments = () => {
+const FormDocuments = ({ dispatchSetDocuments }) => {
 
     const [file, setFile] = useState("");
 
@@ -17,6 +17,8 @@ const FormDocuments = () => {
 
         try {
             await request.post("/documents/store", data);
+            const response = await request.get("/documents")
+            dispatchSetDocuments(response.data.documents)
         } catch (err) {
             alert(err.message)
         }

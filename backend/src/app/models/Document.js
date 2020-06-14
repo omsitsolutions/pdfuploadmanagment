@@ -17,5 +17,9 @@ module.exports = (sequelize, DataTypes) => {
         return values;
     }
 
+    Document.prototype.getPath =  function () {
+        return this.path;
+    }
+
     return Document
 }

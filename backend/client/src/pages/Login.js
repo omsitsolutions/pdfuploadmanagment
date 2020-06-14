@@ -25,7 +25,7 @@ const Login = (props) => {
             setErrorMessage("E-mail and Password are required")
         } else {
             try {
-                const response = await request.post("/sessions", { email, password });
+                const response = await request.post("/auth", { email, password });
                 setToken(response.data.token);
                 setUser(response.data.user);
                 setError(false)

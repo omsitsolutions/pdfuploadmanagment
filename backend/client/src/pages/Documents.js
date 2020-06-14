@@ -11,7 +11,7 @@ const Documents = ({ documents, dispatchSetDocuments }) => {
     useEffect(async () => {
         
         try {
-            const response = await request.get("/documents");
+            const response = await request.get("/documents")
             dispatchSetDocuments(response.data.documents)
         } catch (err) {
             alert(err.message)
@@ -21,7 +21,7 @@ const Documents = ({ documents, dispatchSetDocuments }) => {
 
     return (
         <Container>
-            <FormDocuments />
+            <FormDocuments dispatchSetDocuments={dispatchSetDocuments}/>
             <TableDocuments documents={documents} />
         </Container>
     )

@@ -1,4 +1,5 @@
 const { Document } = require('../models')
+const fs = require('fs')
 const multer = require('multer')
 const uploadPdf = require('../utils/upload_pdf')
 
@@ -45,6 +46,37 @@ class DocumentController {
         return res.json({
             documents: documents
         })
+
+    }
+
+    async viewer(req, res) {
+
+        const document = await Document.findOne({ where: { id: req.query.fileId, id_user: req.userId } })
+
+        if (!document) {
+            return res.status(401).json({ message: 'Preview not available' })
+        }
+
+        const path = `.${document.path}`
+
+        try {
+            if (fs.existsSync(path)) {
+                return fs.readFile(path, function (err, data) {
+                    const stat = fs.statSync(path);
+                    res.setHeader('Content-Length', stat.size);
+                    res.setHeader('Content-Type', 'application/pdf');
+                    res.setHeader('Content-Disposition', 'attachment; filename=document.pdf');
+                    res.contentType("application/pdf");
+                    res.send(data);
+                });
+            }
+
+            return res.status(401).json({ message: 'Preview not available' })
+            
+        } catch (err) {
+            return res.status(401).json({ message: 'Preview not available' })
+        }
+
 
     }
 }

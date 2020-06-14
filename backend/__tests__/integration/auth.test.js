@@ -18,7 +18,7 @@ describe('Authenticate user methods', () => {
         })
 
         const response = await request(app)
-            .post('/sessions')
+            .post('/auth')
             .send({
                 email: user.email,
                 password: 'teste123'
@@ -32,7 +32,7 @@ describe('Authenticate user methods', () => {
         const user = await factory.create('User')
 
         const response = await request(app)
-            .post('/sessions')
+            .post('/auth')
             .send({
                 email: user.email,
                 password: '123456'
@@ -48,7 +48,7 @@ describe('Authenticate user methods', () => {
         })
 
         const response = await request(app)
-            .post('/sessions')
+            .post('/auth')
             .send({
                 email: user.email,
                 password: 'teste123'
