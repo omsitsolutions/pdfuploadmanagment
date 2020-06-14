@@ -5,6 +5,6 @@ backend/node_modules
 backend/uploads
 backend/.env
 backend/.env.test
-frontend/node_modules
-frontend/.env
-frontend/.env.test
+backend/client/node_modules
+backend/client/.env
+backend/client/.env.test

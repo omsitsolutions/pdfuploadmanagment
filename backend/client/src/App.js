@@ -1,9 +1,10 @@
 import React from 'react'
-import Document from './pages/Documents'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Routes from './Routes'
 
 const App = () => (
   <div>
-    <Document />
+    <Routes />
   </div>
 )
 
