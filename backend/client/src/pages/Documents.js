@@ -4,6 +4,7 @@ import { Container } from 'react-bootstrap';
 import request from '../services/request.services';
 import { setDocuments } from '../actions'
 import TableDocuments from '../components/TableDocuments'
+import FormDocuments from '../components/FormDocuments'
 
 const Documents = ({ documents, dispatchSetDocuments }) => {
 
@@ -20,22 +21,20 @@ const Documents = ({ documents, dispatchSetDocuments }) => {
 
     return (
         <Container>
+            <FormDocuments />
             <TableDocuments documents={documents} />
         </Container>
     )
 }
 
-const mapStateToProps = state => {
-    return {
-        documents: state.documents
-    }
-}
+const mapStateToProps = state => ({
+    documents: state.documents
+})
 
 const mapDispatchToProps = dispatch => ({
     dispatchSetDocuments: documents => {
         dispatch(setDocuments(documents))
     }
 })
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(Documents)
