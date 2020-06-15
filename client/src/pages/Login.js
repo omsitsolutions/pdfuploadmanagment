@@ -27,7 +27,7 @@ const Login = (props) => {
             try {
                 const response = await request.post("/auth", { email, password })
                 setToken(response.data.token)
-                setUser(response.data.user)
+                setUser(JSON.stringify(response.data.user))
                 setError(false)
                 setErrorMessage("")
                 props.history.push("/documents")

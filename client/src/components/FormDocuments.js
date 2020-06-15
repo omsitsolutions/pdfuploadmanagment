@@ -30,11 +30,11 @@ const FormDocuments = ({ dispatchSetDocuments }) => {
                 <Form.File
                     onChange={(e) => onChangeHandler(e)}
                     id="file"
-                    label="Arquivo PDF"
+                    label="Envie seu documento PDF"
                     accept='application/pdf' />
             </Form.Group>
             <Form.Group>
-                <Button onClick={() => onClickHandler()} ovariant="primary">Enviar Documento</Button>
+                <Button onClick={() => onClickHandler()} ovariant="primary">Enviar</Button>
             </Form.Group>
         </Form>
     )

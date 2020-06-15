@@ -1,16 +1,20 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-import { Container } from 'react-bootstrap'
+import { Container, Row, Col, Button } from 'react-bootstrap'
 import request from '../services/request.services'
 import { viewer, details } from '../services/documents.services'
-import { logout } from '../services/user.services'
+import { getUser, logout } from '../services/user.services'
 import { setDocuments } from '../actions'
 import TableDocuments from '../components/TableDocuments'
 import FormDocuments from '../components/FormDocuments'
-
 import { withRouter } from "react-router-dom";
 
+import '../styles/Documents.css'
+
 const Documents = ({ documents, dispatchSetDocuments, history }) => {
+
+    const user = getUser()
+    console.log('user', user)
 
     const getDocuments = async () => {
         try {
@@ -26,10 +30,31 @@ const Documents = ({ documents, dispatchSetDocuments, history }) => {
         getDocuments()
     }, [])
 
+    const handleLogout = () => {
+        logout()
+        return history.push("/")
+    }
+
     return (
-        <Container>
-            <FormDocuments dispatchSetDocuments={dispatchSetDocuments}/>
-            <TableDocuments documents={documents} viewer={viewer} details={details}/>
+        <Container className="containerDocuments">
+            <Container>
+                <Row>
+                    <Col>
+                        Bem Vindo, {user.name}!
+                    </Col>
+                    <Col>
+                        <Button className="btnLogout" onClick={() => handleLogout()} variant="link">
+                            Sair
+                        </Button>
+                    </Col>
+                </Row>
+            </Container>
+            <Container>
+                <FormDocuments dispatchSetDocuments={dispatchSetDocuments} />
+            </Container>
+            <Container>
+                <TableDocuments documents={documents} viewer={viewer} details={details} />
+            </Container>
         </Container>
     )
 }
