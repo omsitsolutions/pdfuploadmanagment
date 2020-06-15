@@ -10,5 +10,6 @@ routes.use(authMiddleware)
 routes.get('/documents', DocumentController.getDocumentsByUser)
 routes.post('/documents/store', DocumentController.store)
 routes.post('/documents/viewer', DocumentController.viewer)
+routes.get('/documents/details', DocumentController.details)
 
 module.exports = routes

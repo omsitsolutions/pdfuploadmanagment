@@ -3,7 +3,7 @@ import { withRouter } from "react-router-dom";
 import { Button, Form } from "react-bootstrap";
 import request from '../services/request.services';
 import { isAuthenticated, setUser, setToken } from "../services/user.services";
-import "../Login.css";
+import "../styles/Auth.css";
 
 const Login = (props) => {
 
@@ -40,7 +40,7 @@ const Login = (props) => {
     }
 
     return (
-        <div className="Login">
+        <div className="Auth">
             <Form>
                 <Form.Group controlId="formBasicEmail">
                     <Form.Label>E-mail</Form.Label>

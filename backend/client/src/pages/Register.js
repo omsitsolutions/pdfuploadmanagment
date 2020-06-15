@@ -3,7 +3,7 @@ import { withRouter } from "react-router-dom";
 import { Button, Form } from "react-bootstrap";
 import request from '../services/request.services';
 import { isAuthenticated, setUser, setToken } from "../services/user.services";
-import "../Login.css";
+import "../styles/Auth.css";
 
 const Register = (props) => {
 

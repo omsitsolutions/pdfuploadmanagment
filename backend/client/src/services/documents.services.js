@@ -13,4 +13,9 @@ export const viewer = async (id) => {
     return response
 }
 
+export const details = async (id) => {
+    const response = await request.get(`/documents/details?fileId=${id}`)
+    return response
+}
+
 

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { Container } from 'react-bootstrap';
 import request from '../services/request.services';
-import { viewer } from '../services/documents.services';
+import { viewer, details } from '../services/documents.services';
 import { setDocuments } from '../actions'
 import TableDocuments from '../components/TableDocuments'
 import FormDocuments from '../components/FormDocuments'
@@ -23,7 +23,7 @@ const Documents = ({ documents, dispatchSetDocuments }) => {
     return (
         <Container>
             <FormDocuments dispatchSetDocuments={dispatchSetDocuments}/>
-            <TableDocuments documents={documents} viewer={viewer}/>
+            <TableDocuments documents={documents} viewer={viewer} details={details}/>
         </Container>
     )
 }

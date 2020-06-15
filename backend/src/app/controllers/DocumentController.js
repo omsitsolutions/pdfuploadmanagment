@@ -1,5 +1,6 @@
 const { Document } = require('../models')
 const fs = require('fs')
+const pdf = require('pdf-parse');
 const multer = require('multer')
 const uploadPdf = require('../utils/upload_pdf')
 
@@ -77,8 +78,42 @@ class DocumentController {
         } catch (err) {
             return res.status(401).json({ message: 'Preview not available' })
         }
+    }
 
+    async details(req, res) {
 
+        const document = await Document.findOne({ where: { id: req.query.fileId, id_user: req.userId } })
+
+        if (!document) {
+            return res.status(401).json({ message: 'Preview not available' })
+        }
+
+        const path = `.${document.path}`
+
+        try {
+            if (fs.existsSync(path)) {
+
+                const buffer = fs.readFileSync(path);
+
+                await pdf(buffer).then(function(data) {
+                   
+                    console.log(data.numpages);
+                    console.log(data.numrender);
+                    console.log(data.info);
+                    console.log(data.metadata); 
+                    console.log(data.version);
+                    console.log(data.text); 
+
+                    return res.status(200).json(data)
+
+                });
+            }
+
+            return res.status(401).json({ message: 'Preview not available' })
+            
+        } catch (err) {
+            return res.status(401).json({ message: 'Preview not available' })
+        }
     }
 }
 
