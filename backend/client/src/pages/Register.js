@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { withRouter } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import { Button, Form } from "react-bootstrap";
 import request from '../services/request.services';
 import { isAuthenticated, setUser, setToken } from "../services/user.services";
@@ -42,10 +42,10 @@ const Register = (props) => {
     }
 
     return (
-        <div className="Login">
+        <div className="Auth">
             <Form>
 
-                <Form.Group controlId="formBasicEmail">
+                <Form.Group controlId="formBasicName">
                     <Form.Label>Name</Form.Label>
                     <Form.Control
                         value={name}
@@ -72,12 +72,21 @@ const Register = (props) => {
                         placeholder="Senha" />
                 </Form.Group>
 
-                <Button onClick={(e) => handleRegister(e)} variant="primary">
-                    Criar Usuário
-                </Button>
+                <Form.Group>
+                    <Link to={`/`} activeClassName="active">Return to Login</Link>
+                </Form.Group>
+
+                <Form.Group>
+                    <Button onClick={(e) => handleRegister(e)} variant="primary">
+                        Create User
+                    </Button>
+                </Form.Group>
+
+                <Form.Group>
                 {
-                    error ? <div> {errorMessage} </div> : null
+                    error ? <div className='error'>{errorMessage} </div> : null
                 }
+                </Form.Group>
             </Form>
         </div>
     );

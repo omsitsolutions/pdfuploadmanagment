@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { withRouter } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import { Button, Form } from "react-bootstrap";
 import request from '../services/request.services';
 import { isAuthenticated, setUser, setToken } from "../services/user.services";
@@ -60,12 +60,21 @@ const Login = (props) => {
                         placeholder="Senha" />
                 </Form.Group>
 
-                <Button onClick={(e) => handleLogin(e)} variant="primary">
-                    Entrar
-                </Button>
+                <Form.Group>
+                    <Link to={`/register`} activeClassName="active">Register</Link>
+                </Form.Group>
+
+                <Form.Group>
+                    <Button onClick={(e) => handleLogin(e)} variant="primary">
+                        Entrar
+                    </Button>
+                </Form.Group>
+
+                <Form.Group>
                 {
-                    error ? <div> {errorMessage} </div> : null
+                    error ? <div className='error'>{errorMessage} </div> : null
                 }
+                </Form.Group>
             </Form>
         </div>
     );

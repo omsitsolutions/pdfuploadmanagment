@@ -96,16 +96,7 @@ class DocumentController {
                 const buffer = fs.readFileSync(path);
 
                 await pdf(buffer).then(function(data) {
-                   
-                    console.log(data.numpages);
-                    console.log(data.numrender);
-                    console.log(data.info);
-                    console.log(data.metadata); 
-                    console.log(data.version);
-                    console.log(data.text); 
-
                     return res.status(200).json(data)
-
                 });
             }
 
