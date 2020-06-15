@@ -8,3 +8,4 @@ backend/.env.test
 backend/client/node_modules
 backend/client/.env
 backend/client/.env.test
+backend/__tests__/database.sqlite

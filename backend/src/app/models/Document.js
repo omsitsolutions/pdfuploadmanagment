@@ -6,6 +6,7 @@ module.exports = (sequelize, DataTypes) => {
     const Document = sequelize.define("Document", {
         id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
         id_user: DataTypes.INTEGER,
+        name: DataTypes.STRING,
         size: DataTypes.STRING,
         path: DataTypes.STRING
     })
@@ -16,10 +17,6 @@ module.exports = (sequelize, DataTypes) => {
         delete values.id_user;
         return values;
     }
-
-    Document.prototype.getPath =  function () {
-        return this.path;
-    }
-
+    
     return Document
 }

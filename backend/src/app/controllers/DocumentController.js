@@ -18,6 +18,7 @@ class DocumentController {
             try {
                 const document = await Document.create({
                     id_user: req.userId,
+                    name: req.file.originalname,
                     size: req.file.size || null,
                     path: `/uploads/${req.file.filename}`
                 })

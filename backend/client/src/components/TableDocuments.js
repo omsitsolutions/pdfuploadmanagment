@@ -22,6 +22,7 @@ const TableDocuments = ({ documents, viewer }) => {
                 <thead>
                     <tr>
                         <th>ID</th>
+                        <th>Name</th>
                         <th>Size</th>
                         <th>Ações</th>
                     </tr>
@@ -30,6 +31,7 @@ const TableDocuments = ({ documents, viewer }) => {
                     {documents.map((row) => (
                         <tr>
                             <td>{row.id}</td>
+                            <td>{row.name || 'Não definido'}</td>
                             <td>{row.size || 'Não definido'}</td>
                             <td><Button onClick={(e) => viewerDocument(e, row.id)} variant="link">Visualizar</Button></td>
                         </tr>

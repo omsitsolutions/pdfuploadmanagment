@@ -19,8 +19,9 @@ describe('Documents methods', () => {
             password_req: 'teste123'
         })
 
-        const document = await Document.create({
+        await Document.create({
             id_user: user.id,
+            name: 'test.pdf',
             path: '/path/test.pdf',
             size: 1000
         })
