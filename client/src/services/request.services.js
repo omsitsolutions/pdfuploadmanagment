@@ -1,16 +1,16 @@
-import axios from "axios";
-import { getToken } from "./user.services";
+import axios from "axios"
+import { getToken } from "./user.services"
 
 const request = axios.create({
   baseURL: "http://127.0.0.1:5000"
-});
+})
 
 request.interceptors.request.use(async config => {
-  const token = getToken();
+  const token = getToken()
   if (token) {
-    config.headers.Authorization = `Bearer ${token}`;
+    config.headers.Authorization = `Bearer ${token}`
   }
-  return config;
-});
+  return config
+})
 
-export default request;
+export default request

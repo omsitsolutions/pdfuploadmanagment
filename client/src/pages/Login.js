@@ -1,36 +1,36 @@
-import React, { useState } from "react";
-import { Link, withRouter } from "react-router-dom";
-import { Button, Form } from "react-bootstrap";
-import request from '../services/request.services';
-import { isAuthenticated, setUser, setToken } from "../services/user.services";
-import "../styles/Auth.css";
+import React, { useState } from "react"
+import { Link, withRouter } from "react-router-dom"
+import { Button, Form } from "react-bootstrap"
+import request from '../services/request.services'
+import { isAuthenticated, setUser, setToken } from "../services/user.services"
+import "../styles/Auth.css"
 
 const Login = (props) => {
 
     if(isAuthenticated()){
-        props.history.push("/documents");
+        props.history.push("/documents")
     }
 
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
     const [error, setError] = useState(false)
     const [errorMessage, setErrorMessage] = useState("")
 
     const handleLogin = async event => {
         
-        event.preventDefault();
+        event.preventDefault()
 
         if (!email || !password) {
             setError(true)
             setErrorMessage("E-mail and Password are required")
         } else {
             try {
-                const response = await request.post("/auth", { email, password });
-                setToken(response.data.token);
-                setUser(response.data.user);
+                const response = await request.post("/auth", { email, password })
+                setToken(response.data.token)
+                setUser(response.data.user)
                 setError(false)
                 setErrorMessage("")
-                props.history.push("/documents");
+                props.history.push("/documents")
 
             } catch (err) {
                 setError(true)
@@ -61,7 +61,7 @@ const Login = (props) => {
                 </Form.Group>
 
                 <Form.Group>
-                    <Link to={`/register`} activeClassName="active">Register</Link>
+                    <Link to={`/register`}>Register</Link>
                 </Form.Group>
 
                 <Form.Group>
@@ -77,7 +77,7 @@ const Login = (props) => {
                 </Form.Group>
             </Form>
         </div>
-    );
+    )
 }
 
 export default withRouter(Login)

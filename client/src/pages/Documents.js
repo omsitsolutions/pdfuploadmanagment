@@ -1,24 +1,30 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-import { Container } from 'react-bootstrap';
-import request from '../services/request.services';
-import { viewer, details } from '../services/documents.services';
+import { Container } from 'react-bootstrap'
+import request from '../services/request.services'
+import { viewer, details } from '../services/documents.services'
+import { logout } from '../services/user.services'
 import { setDocuments } from '../actions'
 import TableDocuments from '../components/TableDocuments'
 import FormDocuments from '../components/FormDocuments'
 
-const Documents = ({ documents, dispatchSetDocuments }) => {
+import { withRouter } from "react-router-dom";
 
-    useEffect(async () => {
-        
+const Documents = ({ documents, dispatchSetDocuments, history }) => {
+
+    const getDocuments = async () => {
         try {
             const response = await request.get("/documents")
             dispatchSetDocuments(response.data.documents)
         } catch (err) {
-            alert(err.message)
+            logout()
+            return history.push("/")
         }
+    }
 
-    }, []);
+    useEffect(() => {
+        getDocuments()
+    }, [])
 
     return (
         <Container>
@@ -38,4 +44,4 @@ const mapDispatchToProps = dispatch => ({
     }
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Documents)
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Documents))

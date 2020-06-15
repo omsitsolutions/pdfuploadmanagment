@@ -1,11 +1,8 @@
 .env
 .env.test
 node_modules/
-backend/node_modules
-backend/uploads
-backend/.env
-backend/.env.test
-backend/client/node_modules
-backend/client/.env
-backend/client/.env.test
-backend/__tests__/database.sqlite
+uploads/
+client/node_modules/
+client/.env
+client/.env.test
+__tests__/database.sqlite

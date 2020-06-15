@@ -53,7 +53,7 @@ const TableDocuments = ({ documents, viewer, details }) => {
                 </thead>
                 <tbody>
                     {documents.map((row) => (
-                        <tr>
+                        <tr key={row.id}>
                             <td>{row.id}</td>
                             <td>{row.name || 'Undefined'}</td>
                             <td>{row.size ? `${parseInt(row.size / 1000)} KB`: 'Undefined'}</td>

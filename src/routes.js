@@ -7,6 +7,9 @@ routes.post('/auth', AuthController.login)
 routes.post('/create', AuthController.create)
 
 routes.use(authMiddleware)
+routes.get('/verifyToken', (req, res) => {
+    res.status(200).json({ message: 'Valid Token' })
+})
 routes.get('/documents', DocumentController.getDocumentsByUser)
 routes.post('/documents/store', DocumentController.store)
 routes.post('/documents/viewer', DocumentController.viewer)

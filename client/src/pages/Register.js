@@ -73,7 +73,7 @@ const Register = (props) => {
                 </Form.Group>
 
                 <Form.Group>
-                    <Link to={`/`} activeClassName="active">Return to Login</Link>
+                    <Link to={`/`}>Return to Login</Link>
                 </Form.Group>
 
                 <Form.Group>
