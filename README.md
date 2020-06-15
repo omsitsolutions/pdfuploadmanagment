@@ -1,6 +1,6 @@
 # Gerenciador de Documentos (Node.js e React)
 
-O projeto é um simples (mas ótimo para estudos) gerenciador de documentos, na qual o usuário pode se cadastrar, se logar, realizar upload de documentos em PDF, ver detalhes e até mesmo visualizar os mesmos. O projeto tem seu Backend desenvolvido com Node.js (Express) e o Frontend foi desenvolvido com React.
+O projeto é um simples gerenciador de documentos, na qual o usuário pode se cadastrar, se logar, realizar upload de documentos em PDF, ver detalhes e até mesmo visualizar os mesmos. O projeto tem seu Backend desenvolvido com Node.js (Express) e o Frontend foi desenvolvido com React.
 
 O que você vai encontrar no Backend:
   - Node.js (Express)
