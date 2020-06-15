@@ -68,8 +68,9 @@ Ainda dentro da pasta client, crie o arquivo `.env` com a seguinte configuraçã
 ```sh
 SKIP_PREFLIGHT_CHECK=true
 ```
-Pronto, tudo configurado, já podemos utilizar nosso sistema em ambiente de desenvolvimento, um script já foi pré-configurado no arquivo `.package.json` para que possamos executar nosso servidor e nosso client ao mesmo tempo, basta executar o comando:
+Pronto, tudo configurado, já podemos utilizar nosso sistema em ambiente de desenvolvimento, um script já foi pré-configurado no arquivo `.package.json` para que possamos executar nosso servidor e nosso client ao mesmo tempo, basta voltar para a a raiz do projeto e executar o comando yarn dev
 ```sh
+$ cd ..
 $ yarn dev
 ```
 
