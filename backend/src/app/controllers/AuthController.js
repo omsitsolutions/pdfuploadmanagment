@@ -5,13 +5,13 @@ class AuthController {
 
     async create(req, res) {
 
-        const { name, email, password_req } = req.body
+        const { name, email, password } = req.body
 
         try {
             const user = await User.create({
                 name: name,
                 email: email,
-                password_req: password_req
+                password_req: password
             })
     
             if (!user) {

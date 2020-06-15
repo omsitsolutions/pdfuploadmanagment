@@ -1,19 +1,13 @@
 import React from 'react'
 import { Button, Table } from 'react-bootstrap';
-import request from '../services/request.services';
 
-const TableDocuments = ({ documents }) => {
+const TableDocuments = ({ documents, viewer }) => {
 
     const viewerDocument = async (e, id) => {
         e.preventDefault()
 
         try {
-            const response = await request.post(`/documents/viewer?fileId=${id}`, {}, {
-                responseType: 'arraybuffer',
-                headers: {
-                  'Accept': 'application/pdf'
-                }
-            })
+            const response = await viewer(id);
             const file = new Blob([response.data], { type: 'application/pdf' });
             const fileURL = URL.createObjectURL(file);
             window.open(fileURL);
