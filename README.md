@@ -1,11 +1,11 @@
 # Gerenciador de Documentos (Node.js e React)
 
-O projeto é um simples (mas ótimo para estudos) gerenciador de documentos, na qual o usuário pode se cadastrar, se logar, realizar upload de documentos em PDF, ver detalhes e até mesmo visualizar os mesmos. O projeto tem seu Backend desenvolvido com Node.js (Express) e o Frontend foi desenvolvido com React.
+O projeto é um simples gerenciador de documentos, na qual o usuário pode se cadastrar, se logar, realizar upload de documentos em PDF, ver detalhes e até mesmo visualizar os mesmos. O projeto tem seu Backend desenvolvido com Node.js (Express) e o Frontend foi desenvolvido com React.
 
 O que você vai encontrar no Backend:
   - Node.js (Express)
   - Sequelize (Migrations, Seeders e Models)
-  - Postgres (Banco de dados para ambiente de desenvolvimenti)
+  - Postgres (Banco de dados para ambiente de desenvolvimento)
   - TDD com jest (testes unitários e testes de integração) utilizando SQLite
   - Autenticação JWT
   - Upload de arquivos com a lib Multer
