@@ -18,6 +18,10 @@ O que você vai encontrar no Frontend:
   - Routers (actions e reducers)
 
 # Dependências
+  - Banco Postgres rodando localmente 
+  - Node.js v12+
+  - yarn 
+
 
 # Configuração e Execução
 Após clonar e acessar a pasta do projeto, vamos instalar as dependências para que o nosso servidor Node.js possa funcionar.
