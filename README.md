@@ -5,7 +5,7 @@ O projeto é um simples gerenciador de documentos, na qual o usuário pode se ca
 O que você vai encontrar no Backend:
   - Node.js (Express)
   - Sequelize (Migrations, Seeders e Models)
-  - Postgres (Banco de dados para ambiente de desenvolvimenti)
+  - Postgres (Banco de dados para ambiente de desenvolvimento)
   - TDD com jest (testes unitários e testes de integração) utilizando SQLite
   - Autenticação JWT
   - Upload de arquivos com a lib Multer
