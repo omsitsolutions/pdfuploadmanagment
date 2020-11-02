@@ -1,76 +1,73 @@
-# Gerenciador de Documentos (Node.js e React)
+Document Manager (Node.js and React)
 
-O projeto é um simples gerenciador de documentos, na qual o usuário pode se cadastrar, se logar, realizar upload de documentos em PDF, ver detalhes e até mesmo visualizar os mesmos. O projeto tem seu Backend desenvolvido com Node.js (Express) e o Frontend foi desenvolvido com React.
+The project is a simple document manager, in which the user can register, login, upload PDF documents, view details and even view them. The project has its Backend developed with Node.js (Express) and the Frontend was developed with React.
 
-O que você vai encontrar no Backend:
-  - Node.js (Express)
-  - Sequelize (Migrations, Seeders e Models)
-  - Postgres (Banco de dados para ambiente de desenvolvimento)
-  - TDD com jest (testes unitários e testes de integração) utilizando SQLite
-  - Autenticação JWT
-  - Upload de arquivos com a lib Multer
-  - Buffer de arquivos
-  
-O que você vai encontrar no Frontend:
-  - React 
-  - Redux (controle de estado)
-  - Axios para consumir APIs
-  - Routers (actions e reducers)
+What you will find in the Backend:
 
-# Dependências
-  - Banco Postgres rodando localmente 
-  - Node.js v12+
-  - yarn 
+    Node.js (Express)
+    Sequelize (Migrations, Seeders and Models)
+    Postgres (Database for development environment)
+    TDD with jest (unit tests and integration tests) using SQLite
+    JWT authentication
+    Upload files with lib Multer
+    File Buffer
 
+What you will find in Frontend:
 
-# Configuração e Execução
-Após clonar e acessar a pasta do projeto, vamos instalar as dependências para que o nosso servidor Node.js possa funcionar.
-Crie na raiz do projeto o arquivo `.env` utilizando as credenciais de seu banco Postgres:
-```sh
-APP_SECRET=ESCOLHA_UMA_CHAVE
-DB_USER=
-DB_PASSWORD=
-DB_DATABASE=
-DB_HOST=
-DB_PORT=
-DB_DIALECT=postgres
-```
+    React
+    Redux (state control)
+    Axios to consume APIs
+    Routers (actions and reducers)
 
-Ainda na raiz do projeto vamos criar o arquivo `.env.test` que será responsável por carregar nossas configurações para que os testes possam ser executados. Como citado anteriormente, os testes serão realizados utilizando o banco de dados local SQLite.
-```sh
-APP_SECRET=ESCOLHA_UMA_CHAVE
-DB_DIALECT=sqlite
-```
+Dependencies
 
-Após configurar todas as variáveis de ambiente, vamos instalar nossas dependências, executando o comando na raiz do projeto:
-```sh
+    Postgres Bank running locally
+    Node.js v12 +
+    yarn
+
+Configuration and Execution
+
+After cloning and accessing the project folder, we will install the dependencies so that our Node.js server can work. Create the .env file at the root of the project using your Postgres bank credentials:
+
+APP_SECRET = CHOICE_UMA_CHAVE
+DB_USER =
+DB_PASSWORD =
+DB_DATABASE =
+DB_HOST =
+DB_PORT =
+DB_DIALECT = postgres
+
+Still at the root of the project, we will create the .env.test file that will be responsible for loading our settings so that the tests can be run. As previously mentioned, the tests will be performed using the local SQLite database.
+
+APP_SECRET = CHOICE_UMA_CHAVE
+DB_DIALECT = sqlite
+
+After configuring all the environment variables, we will install our dependencies, executing the command at the root of the project:
+
 $ yarn
-```
-Com as dependências instaladas, o nosso servidor já está pronto para ser executado, inclusive, já podemos roda os testes para serem validados:
-```sh
+
+With the dependencies installed, our server is now ready to run, including, we can run the tests to be validated:
+
 $ yarn test
-```
 
-Após a validação dos testes, podemos executar nossas migrations para que as tabelas sejam geradas no nosso Banco de Dados Postgres.
-```sh
-$ yarn sequelize db:migrate
-```
+After validating the tests, we can perform our migrations so that the tables are generated in our Postgres Database.
 
-Nosso servidor está pronto, precisamos configurar o nosso client (React), para isso, vamos entrar na pasta client
-```sh
+$ yarn sequelize db: migrate
+
+Our server is ready, we need to configure our client (React), for that, we will enter the client folder
+
 $ cd client
-```
-Podemos executar o comando yarn para que as dependências possam ser instaladas
-```sh
+
+We can run the yarn command so that dependencies can be installed
+
 $ yarn
-```
-Ainda dentro da pasta client, crie o arquivo `.env` com a seguinte configuração
-```sh
-SKIP_PREFLIGHT_CHECK=true
-```
-Pronto, tudo configurado, já podemos utilizar nosso sistema em ambiente de desenvolvimento, um script já foi pré-configurado no arquivo `.package.json` para que possamos executar nosso servidor e nosso client ao mesmo tempo, basta voltar para a a raiz do projeto e executar o comando yarn dev
-```sh
+
+Still inside the client folder, create the .env file with the following configuration
+
+SKIP_PREFLIGHT_CHECK = true
+
+Okay, everything is configured, we can now use our system in a development environment, a script has already been pre-configured in the .package.json file so that we can run our server and our client at the same time, just go back to the root of the project and execute the yarn dev command
+
 $ cd ..
 $ yarn dev
-```
 
