@@ -4,11 +4,9 @@ export const TOKEN_USER = "@document/token"
 
 export const isAuthenticated = () => localStorage.getItem(TOKEN_USER) !== null
 
-export const setUser = user => {
-    localStorage.setItem(USER, user)
-}
+export const setUser = user => localStorage.setItem(USER, user)
 
-export const getUser = () => JSON.parse(localStorage.getItem(USER))
+export const getUser = () =>  localStorage.getItem(USER)
 
 export const getToken = () => localStorage.getItem(TOKEN_USER)
 

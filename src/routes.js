@@ -14,5 +14,6 @@ routes.get('/documents', DocumentController.getDocumentsByUser)
 routes.post('/documents/store', DocumentController.store)
 routes.post('/documents/viewer', DocumentController.viewer)
 routes.get('/documents/details', DocumentController.details)
+routes.delete('/documents/deleteId', DocumentController.deleteId)
 
 module.exports = routes

@@ -18,7 +18,7 @@ const Register = (props) => {
     const [errorMessage, setErrorMessage] = useState("")
 
     const handleRegister = async event => {
-        
+
         event.preventDefault();
 
         if (!email || !password || !name) {
@@ -26,7 +26,7 @@ const Register = (props) => {
             setErrorMessage("Name, E-mail and Password are required")
         } else {
             try {
-                
+
                 const response = await request.post("/create", { email, password, name });
                 setToken(response.data.token);
                 setUser(response.data.user);

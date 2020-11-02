@@ -17,7 +17,7 @@ const Login = (props) => {
     const [errorMessage, setErrorMessage] = useState("")
 
     const handleLogin = async event => {
-        
+
         event.preventDefault()
 
         if (!email || !password) {
@@ -26,6 +26,7 @@ const Login = (props) => {
         } else {
             try {
                 const response = await request.post("/auth", { email, password })
+                console.log(JSON.stringify(response.data.user));
                 setToken(response.data.token)
                 setUser(JSON.stringify(response.data.user))
                 setError(false)
@@ -52,12 +53,12 @@ const Login = (props) => {
                 </Form.Group>
 
                 <Form.Group controlId="formBasicPassword">
-                    <Form.Label>Senha</Form.Label>
+                    <Form.Label>Password</Form.Label>
                     <Form.Control
                         value={password}
                         onChange={e => setPassword(e.target.value)}
                         type="password"
-                        placeholder="Senha" />
+                        placeholder="Password" />
                 </Form.Group>
 
                 <Form.Group>
@@ -66,7 +67,7 @@ const Login = (props) => {
 
                 <Form.Group>
                     <Button onClick={(e) => handleLogin(e)} variant="primary">
-                        Entrar
+                        Login
                     </Button>
                 </Form.Group>
 

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { Container, Row, Col, Button } from 'react-bootstrap'
 import request from '../services/request.services'
-import { viewer, details } from '../services/documents.services'
+import { viewer, details, deleteId } from '../services/documents.services'
 import { getUser, logout } from '../services/user.services'
 import { setDocuments } from '../actions'
 import TableDocuments from '../components/TableDocuments'
@@ -13,8 +13,8 @@ import '../styles/Documents.css'
 
 const Documents = ({ documents, dispatchSetDocuments, history }) => {
 
-    const user = getUser()
-    console.log('user', user)
+    const user = JSON.parse(getUser())
+    console.log('Documents Page ->user', user)
 
     const getDocuments = async () => {
         try {
@@ -40,11 +40,11 @@ const Documents = ({ documents, dispatchSetDocuments, history }) => {
             <Container>
                 <Row>
                     <Col>
-                        Bem Vindo, {user.name}!
+                        Welcome, {user.name}!
                     </Col>
                     <Col>
                         <Button className="btnLogout" onClick={() => handleLogout()} variant="link">
-                            Sair
+                            Logout
                         </Button>
                     </Col>
                 </Row>
@@ -53,7 +53,7 @@ const Documents = ({ documents, dispatchSetDocuments, history }) => {
                 <FormDocuments dispatchSetDocuments={dispatchSetDocuments} />
             </Container>
             <Container>
-                <TableDocuments documents={documents} viewer={viewer} details={details} />
+                <TableDocuments documents={documents} viewer={viewer} details={details} deleteId={deleteId} />
             </Container>
         </Container>
     )

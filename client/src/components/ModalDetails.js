@@ -19,17 +19,16 @@ const ModalDetails = ({ data, show, handleClose }) => {
     )
 
     return (
-        <Modal 
-            show={show} 
+        <Modal
+            show={show}
             onHide={handleClose}
-            dialogClassName="modal-90w"
-            >
+            dialogClassName="modal-90w">
             <Modal.Header closeButton>
             <Modal.Title>Document Details</Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 {
-                    data ? details(data) : 'Sem dados' 
+                    data ? details(data) : 'No Data'
                 }
             </Modal.Body>
             <Modal.Footer>
